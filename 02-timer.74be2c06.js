@@ -17,6 +17,6 @@ parcelRequire=function(e,r,t,n){var i,o="function"==typeof parcelRequire&&parcel
 },{"./types/options":"lJVm","./l10n/default":"SFEe","./utils":"U4Vg","./utils/dom":"UwHZ","./utils/dates":"viQd","./utils/formatting":"KtbI","./utils/polyfills":"pFfd"}],"c0Wa":[function(require,module,exports) {
 
 },{}],"d2uN":[function(require,module,exports) {
-"use strict";var r=e(require("flatpickr"));function e(r){return r&&r.__esModule?r:{default:r}}require("flatpickr/dist/flatpickr.min.css");
+"use strict";var e=t(require("flatpickr"));function t(e){return e&&e.__esModule?e:{default:e}}require("flatpickr/dist/flatpickr.min.css");const a={enableTime:!0,time_24hr:!0,defaultDate:new Date,minuteIncrement:1,onClose(e,t){e[0]<new Date?alert("Please choose a date in the future"):(console.log(e[0]),console.log(t))}};(0,e.default)("#datetime-picker",a);
 },{"flatpickr":"BKNP","flatpickr/dist/flatpickr.min.css":"c0Wa"}]},{},["d2uN"], null)
-//# sourceMappingURL=/parcel-project-template/02-timer.1d212a12.js.map
+//# sourceMappingURL=/parcel-project-template/02-timer.74be2c06.js.map

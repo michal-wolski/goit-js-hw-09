@@ -6,13 +6,12 @@ const options = {
     time_24hr: true,
     defaultDate: new Date(),
     minuteIncrement: 1,
-    onClose(selectedDates, defaultDate) {
+    onClose(selectedDates) {
         if (selectedDates[0] < new Date()){
             alert("Please choose a date in the future")
         }
         else {
-            console.log(selectedDates[0]);
-            console.log(defaultDate);
+            console.log(selectedDates);
         }
     },
     

@@ -28,6 +28,7 @@
   "dependencies": {
     "flatpickr": "^4.6.11",
     "lodash.throttle": "^4.1.1",
+    "notiflix": "^3.2.5",
     "throttle": "^1.0.3"
   }
 }

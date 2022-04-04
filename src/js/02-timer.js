@@ -2,48 +2,8 @@ import flatpickr from 'flatpickr';
 import 'flatpickr/dist/flatpickr.min.css';
 import Notiflix from 'notiflix';
 
-// const btnStart= document.querySelector('button[data-start]');
 
-// btnStart.disabled = true ;
 
-// const options = {
-//     enableTime: true,
-//     time_24hr: true,
-//     defaultDate: new Date(),
-//     minuteIncrement: 1,
-//     onClose(selectedDates) {
-//         choosenDate = selectedDates[0];
-//         if (selectedDates[0] <= new Date()){
-//             Notiflix.Notify.failure('Please choose a date in the future');
-//         }
-//         else {
-//             btnStart.disabled = false;
-//             console.log(selectedDate);
-//         }
-//     },
-    
-//   };
-
-//   flatpickr("#datetime-picker", options);
-
-//   function convertMs(ms) {
-//     // Number of milliseconds per unit of time
-//     const second = 1000;
-//     const minute = second * 60;
-//     const hour = minute * 60;
-//     const day = hour * 24;
-  
-//     // Remaining days
-//     const days = Math.floor(ms / day);
-//     // Remaining hours
-//     const hours = Math.floor((ms % day) / hour);
-//     // Remaining minutes
-//     const minutes = Math.floor(((ms % day) % hour) / minute);
-//     // Remaining seconds
-//     const seconds = Math.floor((((ms % day) % hour) % minute) / second);
-  
-//     return { days, hours, minutes, seconds };
-//   }
 
 const startButton = document.querySelector('button[data-start]');
 const timer = document.querySelector('div.timer');
@@ -108,40 +68,36 @@ function convertMs(ms) {
 
   return { days, hours, minutes, seconds };
 }
-function addLeadingZero(number) {
-    string = number.toString();
-    if (string.length === 1) {return string.padStart(2, '0')}
-    else {return string}
-}
-function couting() {
-  idInterval = setInterval(() => {
-  const timeArray = convertMs(choosenDate - new Date());
-  secondsField.textContent = addLeadingZero(timeArray.seconds);
-  minutesField.textContent = addLeadingZero(timeArray.minutes);
-  hoursField.textContent = addLeadingZero(timeArray.hours);
-  daysField.textContent = addLeadingZero(timeArray.days);}
-  ,1000)
-}
+
+const addLeadingZero = fieldValue => {
+  if (fieldValue.length === 1) { return fieldValue.padStart(2, '0'); }
+  else {return fieldValue}
+};
+
+const startCountdown = () => {
+  let timerId = setInterval(() => {
+    const timeArray = convertMs(choosenDate - new Date());
+    secondsField.textContent = addLeadingZero(String(timeArray.seconds));
+    minutesField.textContent = addLeadingZero(String(timeArray.minutes));
+    hoursField.textContent = addLeadingZero(String(timeArray.hours));
+    daysField.textContent = addLeadingZero(String(timeArray.days));
+  }, 1000);
+};
+
+startButton.addEventListener('click', startCountdown);
 
 
-
-
-
-startButton.addEventListener('click', couting());
-
-
-// const startCountdown = () => {
-  //   let timerId = setInterval(() => {
-  //     const timeArray = convertMs(choosenDate - new Date());
-  //     secondsField.textContent = addLeadingZero(String(timeArray.seconds));
-  //     minutesField.textContent = addLeadingZero(String(timeArray.minutes));
-  //     hoursField.textContent = addLeadingZero(String(timeArray.hours));
-  //     daysField.textContent = addLeadingZero(String(timeArray.days));
-  //   }, 1000);
-  // };
-
-// expected output: "05"
-// const addLeadingZero = fieldValue => {
-//   if (fieldValue.length === 1) { return fieldValue.padStart(2, '0'); }
-//   else {return fieldValue}
-// };
+// function addLeadingZero(number) {
+//     string = number.toString();
+//     if (string.length === 1) {return string.padStart(2, '0')}
+//     else {return string}
+// }
+// function couting() {
+//   idInterval = setInterval(() => {
+//   const timeArray = convertMs(choosenDate - new Date());
+//   secondsField.textContent = addLeadingZero(timeArray.seconds);
+//   minutesField.textContent = addLeadingZero(timeArray.minutes);
+//   hoursField.textContent = addLeadingZero(timeArray.hours);
+//   daysField.textContent = addLeadingZero(timeArray.days);}
+//   ,1000)
+// }

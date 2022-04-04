@@ -19,7 +19,7 @@ function changeBgColor () {
 function startChangingBgColor () {
     startBtn.disabled = true;
     stopBtn.disabled = false;
-    idInterval = setInterval(() => changeBgColor(),1000);;
+    idInterval = setInterval(() => changeBgColor(),1000);
 };
 
 function stopChangingBgColor (){
